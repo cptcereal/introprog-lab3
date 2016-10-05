@@ -68,5 +68,42 @@ def dicTwoLists():
 
 # -------------------- Method 3 - Dictionary -------------------- #
 def dicDic():
-    """ Preforms actions depending on the users choice"""
+    """ Calls different functions or preforms actions depending on what menu number the user has entered. """
+    dictionaryDic = {}
+
+    while True:
+        userAlternative = menu()
+
+        def insert():
+            """ If the user has choosen menu alternative 1 this function asks the user for a word to insert
+                and a description of the word.
+                However, if the word is already in the list or is a digit it prints an error message """
+            userInsertWord = raw_input("Word to insert: ")
+            if userInsertWord.isdigit():
+                print"Enter a word instead."
+                print""
+            elif dictionaryDic.has_key(userInsertWord):
+                print"The word", userInsertWord, "is already in the dictionary."
+                print""
+            else:
+                userInsertDesc = raw_input("Description of "+userInsertWord+": ")
+                dictionaryDic[userInsertWord] = userInsertDesc
+                print""
+
+        def lookup():
+            
+        
+        if userAlternative.isdigit() == False:
+            print"Enter a menu number please."
+            print""
+        elif int(userAlternative) == 1:
+            insert()
+        elif int(userAlternative) == 2:
+            lookup()
+        elif int(userAlternative) == 3:
+            print"Exiting program..."
+            break
+        else:
+            print"The menu number you've entered doesn't exist."
+            print""
     
