@@ -10,7 +10,7 @@ def menu():
     userAlternative = raw_input("Choose alternative: ")
     return userAlternative
 
-# -------------------- Metod 1 - Two lists -------------------- #
+# -------------------- Method 1 - Two lists -------------------- #
 def dicTwoLists():
     """ Calls different functions or preforms actions depending on what menu number the user has entered. """
     dictionaryWord = []
@@ -66,7 +66,7 @@ def dicTwoLists():
             print"The menu number you've entered doesn't exist."
             print""
 
-# -------------------- Metod 3 - Dictionary -------------------- #
+# -------------------- Method 3 - Dictionary -------------------- #
 def dicDic():
     """ Preforms actions depending on the users choice"""
-   
+    
