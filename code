@@ -52,7 +52,7 @@ def dicTwoLists():
                 print"The word "+userLookupWord+" doesn't exist in the dictionary."
                 print""
                 
-        """ Calls different functions or preforms actions depending on what number the user have entered. """
+        """ Calls different functions or preforms actions depending on what menu number the user has entered. """
         if userAlternative.isdigit() == False:
             print"Enter a menu number please."
             print""
@@ -70,4 +70,3 @@ def dicTwoLists():
 # -------------------- Metod 3 - Dictionary -------------------- #
 def dicDic():
     """ Preforms actions depending on the users choice"""
-    
