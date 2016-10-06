@@ -1,5 +1,6 @@
 # Main function that takes in the argument choice.
 # Choice decides what method to use the dictionary in.
+# 1 = Two lists, 2 = Tuples, 3 = Dictionaries
 def mainDic(choice):
     # Create all the lists and a dictionary
     dictionaryWord = []
