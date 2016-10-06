@@ -1,162 +1,138 @@
-def menu():
-    """ Prints the menu and asks the user to choose an alternative from the menu
-        and then returns it"""
-
-    print"Menu for dictionary"
-    print"1: Insert"
-    print"2: Lookup"
-    print"3: Exit program"    
-
-    userAlternative = raw_input("Choose alternative: ")
-    return userAlternative
-
-# -------------------- Method 1 - Two lists -------------------- #
-def dicTwoLists():
-    """ Calls different functions or preforms actions depending on what menu number the user has entered. """
+# Main function that takes in the argument choice.
+# Choice decides what method to use the dictionary in.
+def mainDic(choice):
+    # Create all the lists and a dictionary
     dictionaryWord = []
     dictionaryDesc = []
-
-    while True:       
-        userAlternative = menu()
-
-        def insert():
-            """ If the user has choosen menu alternative 1 this function asks the user for a word to insert
-                and a description of the word.
-                However, if the word is already in the list or is a digit it prints an error message """            
-            userInsertWord = raw_input("Word to insert: ")
-            if userInsertWord.isdigit():
-                print"Enter a word instead."
-                print""
-            elif userInsertWord in dictionaryWord:
-                print"The word", userInsertWord, "is already in the dictionary."
-                print""
-            else:
-                userInsertDesc = raw_input("Description of "+userInsertWord+": ")
-                dictionaryWord.append(userInsertWord)
-                dictionaryDesc.append(userInsertDesc)
-                print""
-
-        def lookup():
-            """ If the user has choosen menu alternative 2 this function looks up the description
-                of the word the user entered.
-                However, if the word is not in the list or contains digits it prints an error message """
-            userLookupWord = raw_input("Word to lookup: ")
-            if userLookupWord.isdigit():
-                print"Enter a word instead."
-                print""
-            elif userLookupWord in dictionaryWord:
-                print"Description for "+userLookupWord+":",
-                print dictionaryDesc[dictionaryWord.index(userLookupWord)]
-                print""
-            else:
-                print"The word "+userLookupWord+" doesn't exist in the dictionary."
-                print""
-                
-        if userAlternative.isdigit() == False:
-            print"Enter a menu number please."
-            print""
-        elif int(userAlternative) == 1:
-            insert()
-        elif int(userAlternative) == 2:
-            lookup()
-        elif int(userAlternative) == 3:
-            print"Exiting program..."
-            break
-        else:
-            print"The menu number you've entered doesn't exist."
-            print""
-            
-# -------------------- Method 2 - Tuples -------------------- #
-def dicTup():
-    """ Calls different functions or preforms actions depending on what menu number the user has entered. """
-    dictionaryList = []
-
-    while True:
-        userAlternative = menu()
-
-        def insert():
-            """ If the user has choosen menu alternative 1 this function asks the user for a word to insert
-                and a description of the word.
-                However, if the word is already in the list or is a digit it prints an error message """
-            userInsertWord = raw_input("Word to insert: ")
-            userInsertDesc = raw_input("Description of "+userInsertWord+": ")
-
-            dictionaryTup = ()
-            
-            if userInsertWord.isdigit():
-                print"Enter a word instead."
-                print""
-            for userInsertWord, userInsertDesc in dictionaryList:
-                if userInsertWord == item:
-                    print"The word", userInsertWord, "is already in the dictionary."
-                    print""
-
-                
-
-        if userAlternative.isdigit() == False:
-            print"Enter a menu number please."
-            print""
-        elif int(userAlternative) == 1:
-            insert()
-        elif int(userAlternative) == 2:
-            lookup()
-        elif int(userAlternative) == 3:
-            print"Exiting program..."
-            break
-        else:
-            print"The menu number you've entered doesn't exist."
-            print""
-            
-# -------------------- Method 3 - Dictionary -------------------- #
-def dicDic():
-    """ Calls different functions or preforms actions depending on what menu number the user has entered. """
+    dictionaryTupList = []
     dictionaryDic = {}
 
     while True:
-        userAlternative = menu()
+        # Prints the menu and asks the user to choose an alternative from the menu.
+        print"Menu for dictionary"
+        print"1: Insert"
+        print"2: Lookup"
+        print"3: Exit program"
+        userAlternative = raw_input("Choose alternative: ")
 
-        def insert():
-            """ If the user has choosen menu alternative 1 this function asks the user for a word to insert
-                and a description of the word.
-                However, if the word is already in the list or is a digit it prints an error message """
-            userInsertWord = raw_input("Word to insert: ")
-            if userInsertWord.isdigit():
-                print"Enter a word instead."
-                print""
-            elif dictionaryDic.has_key(userInsertWord):
-                print"The word", userInsertWord, "is already in the dictionary."
-                print""
-            else:
-                userInsertDesc = raw_input("Description of "+userInsertWord+": ")
-                dictionaryDic[userInsertWord] = userInsertDesc
-                print""
-
-        def lookup():
-            """ If the user has choosen menu alternative 2 this function looks up the description
-                of the word the user entered.
-                However, if the word is not in the list or contains digits it prints an error message """
-            userLookupWord = raw_input("Word to lookup: ")
-            if userLookupWord.isdigit():
-                print"Enter a word instead."
-                print""
-            elif dictionaryDic.has_key(userLookupWord):
-                print"Description for "+ userLookupWord+":",
-                print dictionaryDic[userLookupWord]
-                print""
-            else:
-                print"The word "+userLookupWord+" doesn't exist in the dictionary."
-                print""
-        
+        # Calls different functions or preforms actions depending on what alternative the user chose.
         if userAlternative.isdigit() == False:
             print"Enter a menu number please."
-            print""
+            print""             
         elif int(userAlternative) == 1:
-            insert()
+            value = int(userAlternative)
+            solutions(choice, value, dictionaryWord, dictionaryDesc, dictionaryTupList, dictionaryDic)
         elif int(userAlternative) == 2:
-            lookup()
+            value = int(userAlternative)
+            solutions(choice, value, dictionaryWord, dictionaryDesc, dictionaryTupList, dictionaryDic)
         elif int(userAlternative) == 3:
             print"Exiting program..."
             break
         else:
             print"The menu number you've entered doesn't exist."
+            print""
+
+def solutions(choice, value, dictionaryWord, dictionaryDesc, dictionaryTupList, dictionaryDic):
+# If the user chose alternative 1 or 2 this function calls the insert or lookup function
+    if value == 1:
+        insert(choice, dictionaryWord, dictionaryDesc, dictionaryTupList, dictionaryDic)
+    if value == 2:
+        lookup(choice, dictionaryWord, dictionaryDesc, dictionaryTupList, dictionaryDic)
+
+
+def insert(choice, dictionaryWord, dictionaryDesc, dictionaryTupList, dictionaryDic):
+# All the different insert functions and depending on what method the dictionary is being run with
+# the right insert method is used.
+
+    # Insert by using two lists.
+    if choice == 1:      
+        userInsertWord = raw_input("Word to insert: ")
+        if userInsertWord.isdigit():
+            print"Enter a word instead."
+            print""
+        elif userInsertWord in dictionaryWord:
+            print"The word", userInsertWord, "is already in the dictionary."
+            print""
+        else:
+            userInsertDesc = raw_input("Description of "+userInsertWord+": ")
+            dictionaryWord.append(userInsertWord)
+            dictionaryDesc.append(userInsertDesc)
+            print""
+
+    # Insert by using tuples.      
+    if choice == 2:
+        userInsertWord = raw_input("Word to insert: ")           
+        if userInsertWord.isdigit():
+            print"Enter a word instead."
+            print""
+            return
+        for i in dictionaryTupList:
+            if userInsertWord == i[0]:
+                print"The word", userInsertWord, "is already in the dictionary."
+                print""
+                return
+        userInsertDesc = raw_input("Description of "+userInsertWord+": ")
+        dictionaryTupList.append((userInsertWord, userInsertDesc))
+        print""
+
+    # Insert by using dictionaries.
+    if choice == 3:
+        userInsertWord = raw_input("Word to insert: ")
+        if userInsertWord.isdigit():
+            print"Enter a word instead."
+            print""
+        elif dictionaryDic.has_key(userInsertWord):
+            print"The word", userInsertWord, "is already in the dictionary."
+            print""
+        else:
+            userInsertDesc = raw_input("Description of "+userInsertWord+": ")
+            dictionaryDic[userInsertWord] = userInsertDesc
+            print""
+
+def lookup(choice, dictionaryWord, dictionaryDesc, dictionaryTupList, dictionaryDic):
+# All the different lookup functions and depending on what method the dictionary is being run(depends on choice)
+# with the right lookup method is used.
+
+    # Lookup by using two lists.
+    if choice == 1:
+        userLookupWord = raw_input("Word to lookup: ")
+        if userLookupWord.isdigit():
+            print"Enter a word instead."
+            print""
+        elif userLookupWord in dictionaryWord:
+            print"Description for "+userLookupWord+":",
+            print dictionaryDesc[dictionaryWord.index(userLookupWord)]
+            print""
+        else:
+            print"The word "+userLookupWord+" doesn't exist in the dictionary."
+            print""
+
+    # Lookup by using tuples.
+    if choice == 2:
+        userLookupWord = raw_input("Word to lookup: ")
+        if userLookupWord.isdigit():
+            print"Enter a word instead."
+            print""
+            return
+        for i in dictionaryTupList:
+            if userLookupWord == i[0]:
+                print"Description for "+userLookupWord+":",
+                print i[1]
+                print""
+                return
+        print"The word "+userLookupWord+" doesn't exist in the dictionary."
+        print""
+
+    # Lookup by using dictionaries
+    if choice == 3:
+        userLookupWord = raw_input("Word to lookup: ")
+        if userLookupWord.isdigit():
+            print"Enter a word instead."
+            print""
+        elif dictionaryDic.has_key(userLookupWord):
+            print"Description for "+ userLookupWord+":",
+            print dictionaryDic[userLookupWord]
+            print""
+        else:
+            print"The word "+userLookupWord+" doesn't exist in the dictionary."
             print""
